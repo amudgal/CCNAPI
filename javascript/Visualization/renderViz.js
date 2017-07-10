@@ -6,7 +6,7 @@
 var localscopeLastLvl = "";
 var SrcJSON = "";
 var selections =[];
-var badgePath="../plugins/CokeWidget/style/images/badges";
+var badgePath="../plugins/CCNAPI/style/images/badges";
 $( document ).ready(function() {
 	console.log('Properly rendered the renderViz.js ' + badgePath);
 	

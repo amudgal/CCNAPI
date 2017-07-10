@@ -374,7 +374,7 @@ function createExclusionList(){
 	document.cookie = "exclude="+encodeURIComponent(chain)+"; path=/";	
     console.log(getNameOfPath(findTopLevel().substr(findTopLevel().length-3),SrcJSON));
     var Img=getNameOfPath(findTopLevel().substr(findTopLevel().length-3),SrcJSON);
-    document.getElementById("imgS").src = '../plugins/CokeWidget/style/images/badges/'+Img+'.png';
+    document.getElementById("imgS").src = '../plugins/CCNAPI/style/images/badges/'+Img+'.png';
     
 }
 var delete_cookie = function(name) {

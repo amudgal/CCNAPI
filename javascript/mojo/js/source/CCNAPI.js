@@ -1,7 +1,7 @@
 (function () {
     // Define this code as a plugin in the mstrmojo object
-    if (!mstrmojo.plugins.CokeWidget) {
-        mstrmojo.plugins.CokeWidget = {};
+    if (!mstrmojo.plugins.CCNAPI) {
+        mstrmojo.plugins.CCNAPI = {};
     }
     // All mojo visualizations require the CustomVisBase library to render
     mstrmojo.requiresCls("mstrmojo.CustomVisBase");
@@ -10,32 +10,32 @@
      * @extends mstrmojo.CustomVisBase
      */
     // Declare the visualization object
-    mstrmojo.plugins.CokeWidget.CokeWidget = mstrmojo.declare(
+    mstrmojo.plugins.CCNAPI.CCNAPI = mstrmojo.declare(
         // Declare that this code extends CustomVisBase
         mstrmojo.CustomVisBase,
         null,
         {
             // Define the JavaScript class that renders your visualization as mstrmojo.plugins.{plugin name}.{js file name}
-            scriptClass: 'mstrmojo.plugins.CokeWidget.CokeWidget',
+            scriptClass: 'mstrmojo.plugins.CCNAPI.CCNAPI',
 	    // Define the CSS class that will be appended to container div
             cssClass: [
-                {url: "../plugins/CokeWidget/style/PopUpWidget.css"},
-                {url: "../plugins/CokeWidget/javascript/vendor/bootstrap/css/bootstrap.min.css"},
-                {url: "../plugins/CokeWidget/javascript/vendor/animatedModal/demo/css/animate.min.css"},
-                {url: "../plugins/CokeWidget/javascript/vendor/animatedModal/demo/css/normalize.min.css"},
-                {url: "../plugins/CokeWidget/javascript/vendor/bootstrap/css/bootstrap-theme.min.css"}
+                {url: "../plugins/CCNAPI/style/PopUpWidget.css"},
+                {url: "../plugins/CCNAPI/javascript/vendor/bootstrap/css/bootstrap.min.css"},
+                {url: "../plugins/CCNAPI/javascript/vendor/animatedModal/demo/css/animate.min.css"},
+                {url: "../plugins/CCNAPI/javascript/vendor/animatedModal/demo/css/normalize.min.css"},
+                {url: "../plugins/CCNAPI/javascript/vendor/bootstrap/css/bootstrap-theme.min.css"}
             ],
 	    // Define the error message to be displayed if JavaScript errors prevent data from being displayed
             errorDetails: "This visualization requires one attributes.",
 	    // Define the external libraries to be used - in this sample. the Google Charts library
             externalLibraries: [
-                {url: "../plugins/CokeWidget/javascript/vendor/jquery/jquery-3.2.1.min.js"},
-                {url: "../plugins/CokeWidget/javascript/vendor/bootstrap/js/bootstrap.min.js"},
-                {url: "../plugins/CokeWidget/javascript/vendor/typeahead/bloodhound.min.js"},
-                {url: "../plugins/CokeWidget/javascript/vendor/typeahead/typeahead.bundle.min.js"},
-                {url: "../plugins/CokeWidget/javascript/vendor/typeahead/typeahead.jquery.min.js"},
-                {url: "../plugins/CokeWidget/javascript/Visualization/renderViz.js"}//,
-                //{url: "../plugins/CokeWidget/javascript/Visualization/PopUpWidgetController.js"}
+                {url: "../plugins/CCNAPI/javascript/vendor/jquery/jquery-3.2.1.min.js"},
+                {url: "../plugins/CCNAPI/javascript/vendor/bootstrap/js/bootstrap.min.js"},
+                {url: "../plugins/CCNAPI/javascript/vendor/typeahead/bloodhound.min.js"},
+                {url: "../plugins/CCNAPI/javascript/vendor/typeahead/typeahead.bundle.min.js"},
+                {url: "../plugins/CCNAPI/javascript/vendor/typeahead/typeahead.jquery.min.js"},
+                {url: "../plugins/CCNAPI/javascript/Visualization/renderViz.js"}//,
+                //{url: "../plugins/CCNAPI/javascript/Visualization/PopUpWidgetController.js"}
                 
             ],
             // Define whether a tooltip should be displayed with additional information
@@ -87,7 +87,7 @@
                     return data;
                 }
                 //console.log('Applying to Domnode');
-                $(domNode).append('<div class="DashboardBar" ><a href="../plugins/CokeWidget/html/popupWidget.html" data-toggle="modal" data-target="#myModal" ><img id="imgS" src="../plugins/CokeWidget/style/images/badges/CCNA.png"></img></a><div id="myModal" class="modal fade" ><div class="modal-dialog" style="width:80%"><div class="modal-content" ></div></div></div></div>');                
+                $(domNode).append('<div class="DashboardBar" ><a href="../plugins/CCNAPI/html/popupWidget.html" data-toggle="modal" data-target="#myModal" ><img id="imgS" src="../plugins/CCNAPI/style/images/badges/CCNA.png"></img></a><div id="myModal" class="modal fade" ><div class="modal-dialog" style="width:80%"><div class="modal-content" ></div></div></div></div>');                
                 //$(domNode).append('<ul><li><a id="demo01" href="#animatedModal">DEMO01</a></li></ul> <div id="animatedModal"><div  id="btn-close-modal" class="close-animatedModal">CLOSE MODAL</div><div class="modal-content"></div></div><script>$("#demo01").animatedModal();</script>');
                 ApplyBaseImage(prepareData());
                 /*function renderGraph() {
