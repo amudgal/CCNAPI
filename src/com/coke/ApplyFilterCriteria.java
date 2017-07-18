@@ -185,7 +185,7 @@ public class ApplyFilterCriteria extends AbstractAppAddOn {
           							//System.out.println(exclusions[j]);
           							if(elemName.equals(exclusions[j])){
           								we.add(elements.get(e).getElementID()+":"+elemName);	
-          								System.out.println(elements.get(e).getElementID());
+          								System.out.println(elements.get(e).getElementID() + "::" +elemName.trim());
           							}
           						}
           					}
