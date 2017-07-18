@@ -1,3 +1,8 @@
+#imgS{	
+	height:95%!important;
+	width:95%!important;
+	z-index: 99!important;
+}
 .modal-content{
    all: unset!important;	
    * {
@@ -5,14 +10,17 @@
    }
    background-color : #f5f5f5!important;
    overflow: auto!important;
+   z-index: 100!important;
 }
 
-
+figcaption{
+	font-size: 100%!important;
+}
 .modal {
     /*display: none!important; /* Hidden by default */
     position: fixed!important; /* Stay in place */
     float: left!important;
-    z-index: 1!important; /* Sit on top */
+    z-index: 100!important; /* Sit on top */
     left: 0!important;
     top: 0!important;
     width: 100%!important; /* Full width */
