@@ -1,5 +1,11 @@
 <visualizations>
-  <visualization-list name="ajax">
+  <visualization-list name="ajax" show-in-web="true" view-mode="51">
     <visualization id="CCNAPI" desc="Coke Widget" is-mojo="true" scope="18" style-name="CCNAPI" attribute-minimum="1" metric-minimum="0"/>
+  </visualization-list>
+  <visualization-list name="iphone" show-in-web="false" view-mode="70">
+    <visualization id="CCNAPI" desc="Coke Widget" scope="18" style-name="CCNAPI" attribute-minimum="1" metric-minimum="0"/>
+  </visualization-list>
+  <visualization-list name="ipad" show-in-web="false" view-mode="71">
+    <visualization id="CCNAPI" desc="Coke Widget" scope="18" style-name="CCNAPI" attribute-minimum="1" metric-minimum="0"/>
   </visualization-list>
 </visualizations>
