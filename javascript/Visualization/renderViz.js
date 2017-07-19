@@ -9,8 +9,33 @@ var selections =[];
 var badgePath="../plugins/CCNAPI/style/images/badges";
 $( document ).ready(function() {
 	console.log('Properly rendered the renderViz.js ' + badgePath);
-	
+	if(getCookieInitVal('image')){
+		console.log("DDDD"+getCookieInitVal('image'));
+		var Img=getCookieInitVal('image');
+	    if(Img){
+	        document.getElementById("imgS").src = '../plugins/CCNAPI/style/images/badges/'+Img+'.png';
+	    }		
+	}
+
 });
+function getCookieInitVal(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+      //  	console.log(c);
+      //  	console.log(c.substring(name.length, c.length).replace('/"/g','').replace(/'/g,'"'));
+        	var retStr = c.substring(name.length, c.length).replace('/"/g','').replace(/'/g,'"');
+            return retStr.substring(0,retStr.length);
+        }
+    }
+    return "";
+}
 
 function ApplyBaseImage(data){
 	//console.log(data);

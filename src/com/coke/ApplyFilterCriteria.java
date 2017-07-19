@@ -77,7 +77,7 @@ public class ApplyFilterCriteria extends AbstractAppAddOn {
     		}
     		if(cookies.getName(i).equalsIgnoreCase("topLvl")){
     			topLvl=cookies.getStringValue(cookies.getName(i));
-    			System.out.println(exclusions);
+    			System.out.println(topLvl);
     		}
     	}
     	//Storing values in cookies
@@ -120,6 +120,7 @@ public class ApplyFilterCriteria extends AbstractAppAddOn {
                     	  WebConstantPrompt wcp = (WebConstantPrompt) prompt;
                     	  wcp.setAnswer(topLvl);
                     	  wcp.validate();
+                    	  System.out.println("P1:"+topLvl);
                     	  /*WebExpressionPrompt expPrompt = (WebExpressionPrompt) prompt;  
                     	  WebExpression exp = expPrompt.getAnswer();
                     	  exp.clear();
@@ -150,6 +151,7 @@ public class ApplyFilterCriteria extends AbstractAppAddOn {
                     	  WebConstantPrompt wcp = (WebConstantPrompt) prompt;
                     	  wcp.setAnswer(selectedLevel);
                     	  wcp.validate();
+                    	  System.out.println("P2:"+selectedLevel);
                     	 // prompt.answerPrompt();
                       }
                       if("P3".equalsIgnoreCase(prompt.getDisplayName())&& promptType == EnumWebPromptType.WebPromptTypeConstant){
@@ -158,6 +160,7 @@ public class ApplyFilterCriteria extends AbstractAppAddOn {
                     	  wcp.setAnswer(topLvl);
                     	  wcp.validate();
                     	//  prompt.answerPrompt();
+                    	  System.out.println("P3:"+topLvl);
                       }
                       if("P4".equalsIgnoreCase(prompt.getDisplayName())&& promptType == EnumWebPromptType.WebPromptTypeConstant){
                     	  //System.out.println("Good Hit" + prompt.getPromptType());
@@ -165,6 +168,7 @@ public class ApplyFilterCriteria extends AbstractAppAddOn {
                     	  wcp.setAnswer(String.valueOf(Integer.parseInt(selectedLevel)+1));
                     	  wcp.validate();
                     	//  prompt.answerPrompt();
+                    	  System.out.println("P4:"+ Integer.parseInt(selectedLevel)+1);
                       }
                       if("P5".equalsIgnoreCase(prompt.getDisplayName())&& promptType == EnumWebPromptType.WebPromptTypeElements){
                     	  
@@ -204,6 +208,18 @@ public class ApplyFilterCriteria extends AbstractAppAddOn {
     			// TODO Auto-generated catch block
     			e.printStackTrace();
     		}
+    	}else{
+    		RWBean rwb = (RWBean) page.getChildByClass(RWBean.class);
+        	try {
+        		WebObjectsFactory factory = page.getAppContext().getAppSessionManager().getActiveSession().getFactory();
+        	    WebObjectSource oSource = factory.getObjectSource();
+        		RWInstance rwbi = rwb.getRWInstance();
+    			if(rwbi.isPrompted()){
+    			  PromptsBean pbs = rwb.getPromptsBean();
+    			  WebPrompts prompts = pbs.getPrompts();
+    			  prompts.answerPrompts();
+    			}
+    			}catch(Exception e){}
     	}
 
     	super.preCollectData(page);

@@ -374,8 +374,12 @@ function createExclusionList(){
 	document.cookie = "exclude="+encodeURIComponent(chain)+"; path=/";	
     console.log(getNameOfPath(findTopLevel().substr(findTopLevel().length-3),SrcJSON));
     var Img=getNameOfPath(findTopLevel().substr(findTopLevel().length-3),SrcJSON);
-    document.getElementById("imgS").src = '../plugins/CCNAPI/style/images/badges/'+Img+'.png';
-    
+    if(Img){
+        document.getElementById("imgS").src = '../plugins/CCNAPI/style/images/badges/'+Img+'.png';
+    }
+    delete_cookie('image');
+	document.cookie = "image="+Img+"; path=/";
+    //window.location.assign('mstrWeb?evt=2048030&&src=mstrWeb.rwd.rwframe.rwb.2048030&rePrompt=true&fresh=true&documentID=398B5E984877F7644782E2B38984946A');
 }
 var delete_cookie = function(name) {
     document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
@@ -540,3 +544,4 @@ function getNameOfPath(element,srcJSON){
   	}
 	return "";
 }
+

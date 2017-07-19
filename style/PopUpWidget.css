@@ -19,7 +19,7 @@ figcaption{
 .modal {
     /*display: none!important; /* Hidden by default */
     position: fixed!important; /* Stay in place */
-    float: left!important;
+    float: left;
     z-index: 100!important; /* Sit on top */
     left: 0!important;
     top: 0!important;
