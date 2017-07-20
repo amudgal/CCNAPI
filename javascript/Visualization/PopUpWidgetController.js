@@ -42,6 +42,7 @@ $( document ).ready(function() {
           
     $(".badgeImage").click(function(){
     	    var imageClicked="";
+    	    console.log('Level::::::::' + $(this).attr('lvl') );
 	    	//if(!($(this).attr('lvl')>5)){  // REQ1: Last level ie 6 , should not be selectable. 
 	        //------------Logic for Level 2-------------------
 	        if($(this).attr('lvl')>=2 && $(this).attr('lvl')<=5){
@@ -91,7 +92,11 @@ $( document ).ready(function() {
 	        }
 	       
 	        if(!($(this).attr('lvl')>5)){
-		        reflectChanges(treeTraverse(response,$(this).attr('lvl'),$(this).attr('idNo'),activeFlag));
+	        	//if((navigator.userAgent.indexOf("MSIE") != -1 ) || (!!document.documentMode == true )) {
+                //    console.log('Detected IE');	        		
+	        	//}else{
+			        reflectChanges(treeTraverse(response,$(this).attr('lvl'),$(this).attr('idNo'),activeFlag));
+	        	//}
 		    	console.log("Clicked button "+ $(this).attr('id'));
 		        console.log("Inner Tag "+ $(this).attr('src'));
 		        console.log("Last level clicked::" + lastClicked.lvl)
@@ -157,18 +162,20 @@ $( document ).ready(function() {
     	ShowEverything();
     } });
     
+    
 });
 
 var treeTraverse = function(SrcJSON,lvl_Clicked,itmClcked,activeFlag){
 	//console.log("::::treeTraverse(Level Clicked):::"+lvl_Clicked);
-	//console.log("::::treeTraverse(Item Clicked):::"+itmClcked);
+	console.log("::::treeTraverse(Item Clicked):::"+itmClcked);
 	//console.log("::::treeTraverse (JSON):::"+SrcJSON[1].lvl);
 	var JSONObjSel=[];
 	var arrObj=[];
 	//Push down logic
 	for(var i = 0; i < SrcJSON[lvl_Clicked].sel.length; i++){
+		console.log('PL::'+SrcJSON[lvl_Clicked].sel[i].pl);
 		if(SrcJSON[lvl_Clicked].sel[i].pl==itmClcked){
-			//console.log(SrcJSON[lvl_Clicked].sel[i].id + " Activated ??" + activeFlag);
+			console.log(SrcJSON[lvl_Clicked].sel[i].id + " Activated ??" + activeFlag);
 			item = {};
             item["id"] = SrcJSON[lvl_Clicked].sel[i].id; 			
 		    item["flg"] = activeFlag;
@@ -182,13 +189,13 @@ var treeTraverse = function(SrcJSON,lvl_Clicked,itmClcked,activeFlag){
 			arrObj.push.apply(arrObj,treeTraverse(SrcJSON,lvl_Clicked,JSONObjSel[i].id,activeFlag));
 		}
 	}
-	//console.log(arrObj);
+	console.log('Response from treeTraverse:::::::'+arrObj);
 	return arrObj;
 }
 
 function reflectChanges(ActionArrObj){
 	for(var i = 0; i < ActionArrObj.length; i++){
-		//console.log(ActionArrObj[i][0] + ","+ActionArrObj[i][1]);
+		console.log(ActionArrObj[i][0] + ","+ActionArrObj[i][1]);
 		//console.log($('img[idNo='+ActionArrObj[i][0]+']').attr('src'));
 		var image = $('img[idNo='+ActionArrObj[i][0]+']').attr('src').replace(badgePath+'/','');
 		if(ActionArrObj[i][1]=="Y" && (image.indexOf("_GR") != -1)){  
